@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Sound and Fullscreen Background Video</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Prevent scrollbars */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: black; /* Fallback background */
+        }
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure the video covers the entire screen */
+            z-index: -1; /* Place the video behind other elements */
+            display: none; /* Initially hidden */
+        }
+        #play-sound-btn {
+            position: relative;
+            z-index: 1; /* Ensure the button is above the video */
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+        }
+        #play-sound-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <button id="play-sound-btn">Pres this for Unlimited BATA POINTS 🤑💸💸💲💰🤑💲💸</button>
+    <audio id="sound" src="Music/sigmaboy.mp3"></audio>
+    <video id="background-video" autoplay muted loop>
+        <source src="Videos/cheeks.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        // Select the button, audio, and video elements
+        const button = document.getElementById('play-sound-btn');
+        const sound = document.getElementById('sound');
+        const video = document.getElementById('background-video');
+
+        // State variable to track if the video and sound are active
+        let isPlaying = false;
+
+        // Add an event listener to the button
+        button.addEventListener('click', () => {
+            if (!isPlaying) {
+                // Show the video and play the sound
+                video.style.display = 'block';
+                sound.play();
+                button.textContent = 'Press this to stop fuck nigga';
+            } else {
+                // Hide the video and stop the sound
+                video.style.display = 'none';
+                sound.pause();
+                sound.currentTime = 0; // Reset audio to the beginning
+                button.textContent = 'Press this again for MOREEEEEEEEE bata points 🤑🤑💲💲💸💰💸💰';
+            }
+            // Toggle the playing state
+            isPlaying = !isPlaying;
+        });
+    </script>
+</body>
+</html>
